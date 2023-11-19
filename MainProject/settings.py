@@ -1,3 +1,4 @@
+import os
 """
 Django settings for RecommendPlace project.
 
@@ -13,8 +14,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -49,7 +50,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'RecommendPlace.urls'
+# ROOT_URLCONF = 'RecommendPlace.urls'
+ROOT_URLCONF = 'MainProject.urls'
 
 TEMPLATES = [
     {
@@ -67,19 +69,29 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'RecommendPlace.wsgi.application'
+# WSGI_APPLICATION = 'RecommendPlace.wsgi.application'
+WSGI_APPLICATION = 'MainProject.urls'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql', # mysqlclient librarly 설치
+        'NAME': 'travel_place',
+        'USER': 'root',
+        'PASSWORD': '1234', # mariaDB 설치 시 입력한 root 비밀번호 입력
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
