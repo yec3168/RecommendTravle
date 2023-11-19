@@ -14,8 +14,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main',
 ]
 
 MIDDLEWARE = [
@@ -50,8 +51,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# ROOT_URLCONF = 'RecommendPlace.urls'
-ROOT_URLCONF = 'MainProject.urls'
+ROOT_URLCONF = 'RecommendPlace.urls'
+# ROOT_URLCONF = 'MainProject.urls'
 
 TEMPLATES = [
     {
@@ -69,8 +70,8 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'RecommendPlace.wsgi.application'
-WSGI_APPLICATION = 'MainProject.urls'
+WSGI_APPLICATION = 'RecommendPlace.wsgi.application'
+# WSGI_APPLICATION = 'MainProject.urls'
 
 
 # Database
