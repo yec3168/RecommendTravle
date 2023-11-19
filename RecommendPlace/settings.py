@@ -1,4 +1,6 @@
 import os
+
+from config import db
 """
 Django settings for RecommendPlace project.
 
@@ -83,16 +85,7 @@ WSGI_APPLICATION = 'RecommendPlace.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', # mysqlclient librarly 설치
-        'NAME': 'travel_place',
-        'USER': 'root',
-        'PASSWORD': '1234', # mariaDB 설치 시 입력한 root 비밀번호 입력
-        'HOST': 'localhost',
-        'PORT': '3306'
-    }
-}
+DATABASES = db.DATABASES
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
