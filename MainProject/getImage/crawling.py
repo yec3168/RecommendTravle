@@ -5,8 +5,6 @@ import sys
 import urllib.request
 import json
 
-from ... import local_setting
-
 client_id = "kffYtEVruaGNfKtcySHC"
 cliendt_secret= "Kr2s6JmhdJ"
 
@@ -77,7 +75,3 @@ def get_unique_filename(path, filename):
         new_filename = filename + "-" + str(counter)
         counter += 1
     return new_filename
-
-
-
-urllib_request()
