@@ -19,5 +19,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('crawling/', views.getImage),
+    path('view/', views.showImage),
 ]

@@ -5,8 +5,11 @@ import sys
 import urllib.request
 import json
 
+from django.conf import settings
+
+
 client_id = "kffYtEVruaGNfKtcySHC"
-cliendt_secret= "Kr2s6JmhdJ"
+client_secret= "Kr2s6JmhdJ"
 
 query = "계곡"
 param = {
@@ -16,6 +19,7 @@ param = {
     "sort" : "date", #날짜순으로 내림차순 정렬
     "filter": "all"
 }
+
 
 
 # URL 인코딩 시켜줌, query 인코딩
@@ -28,7 +32,7 @@ def urllib_request():
     request = urllib.request.Request(url)
     # 요청에 Application 아이디와 secret을 붙여줌
     request.add_header("X-Naver-Client-Id",client_id)
-    request.add_header("X-Naver-Client-Secret",cliendt_secret)
+    request.add_header("X-Naver-Client-Secret",client_secret)
 
     # url open
     response = urllib.request.urlopen(request)
@@ -45,10 +49,10 @@ def urllib_request():
 
 # 요청받은 json중 link만 가져옴
 def download_image(json_data, qurey):
-    # assets -> 이미지를 저장할 폴더
-    PATH = os.path.join(os.getcwd(), query+"/") # 현재위치 + query
+    # static -> 이미지를 저장할 폴더
+    PATH = os.path.join(os.path.join(os.getcwd(), 'static'), query+"/") # 현재위치 + query
     
-    if not os.path.exists(PATH): #폴더가 없으면
+    if not os.path.exists(PATH): #폴pyth더가 없으면
         os.makedirs(PATH)
 
     for item in json_data:
