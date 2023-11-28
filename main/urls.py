@@ -20,5 +20,7 @@ from . import views
 
 urlpatterns = [
     path('test/', views.test),
-    path('test_image/', views.test_image)
+    # path('test_image/', views.test_image),
+    path('test_image/', views.test_image, name='test_image'),
+
 ]

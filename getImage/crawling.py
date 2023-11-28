@@ -3,6 +3,9 @@ import re
 import urllib.request
 import json
 
+from config.model_dic import place
+from getImage.models import Valley, Mountain, Sea, Camping
+
 
 client_id = "kffYtEVruaGNfKtcySHC"
 cliendt_secret= "Kr2s6JmhdJ"
@@ -56,6 +59,7 @@ def download_image(json_data, qurey):
         title = get_unique_filename(PATH, title)
         image = item['link']
         urllib.request.urlretrieve(image, PATH + title+".jpg")
+        insert_to_ValleyDB(title, os.path.join(PATH, title, ".jpg"))
 
 def normalize_filename(title):
     '''파일 이름 정규화'''
@@ -76,3 +80,19 @@ def get_unique_filename(path, filename):
         counter += 1
     return new_filename
 
+
+def insert_to_ValleyDB(title, path):
+    result = Valley.objects.create(title=title, image_path=path)
+    print(result)
+
+def insert_to_MoutainDB(title, path):
+    result = Mountain.objects.create(title=title, image_path=path)
+    print(result)
+
+def insert_to_CampingDB(title, path):
+    result = Camping.objects.create(title=title, image_path=path)
+    print(result)
+
+def insert_to_SeaDB(title, path):
+    result = Sea.objects.create(title=title, image_path=path)
+    print(result) 
