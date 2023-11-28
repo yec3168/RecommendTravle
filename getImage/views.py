@@ -5,5 +5,5 @@ from . import crawling
 # Create your views here.
 
 def getImage(request):
-    crawling.urllib_request()
+    crawling.urllib_request_loop()
     return HttpResponse(200)
