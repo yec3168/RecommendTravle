@@ -20,4 +20,5 @@ from . import views
 
 urlpatterns = [
     path('view/', views.showImage),
+    path('imageView/',views.imageView),
 ]
