@@ -6,7 +6,25 @@
 <body>
     <h1>Naver Image List</h1>
 
-    {% for image in images %}
+    {% for image in Valley_images %}
+        <div>
+            <h3>{{ image.title }}</h3>
+            <img src="{{image.url}}" alt="{{ image.title }}">
+        </div>
+    {% endfor %}
+    {% for image in Sea_images %}
+        <div>
+            <h3>{{ image.title }}</h3>
+            <img src="{{image.url}}" alt="{{ image.title }}">
+        </div>
+    {% endfor %}
+    {% for image in Mountain_images %}
+        <div>
+            <h3>{{ image.title }}</h3>
+            <img src="{{image.url}}" alt="{{ image.title }}">
+        </div>
+    {% endfor %}
+    {% for image in Camping_images %}
         <div>
             <h3>{{ image.title }}</h3>
             <img src="{{image.url}}" alt="{{ image.title }}">

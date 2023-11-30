@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.conf import settings
 import os, datetime
 
-from getImage.models import Valley
+from getImage.models import Valley, Sea, Mountain, Camping
 
 
 
@@ -20,6 +20,13 @@ def showImage(request):
 
 
 def imageView(request):
-    images = Valley.objects.all()
+    Valley_images = Valley.objects.all()
+    Sea_images = Sea.objects.all()
+    Mountain_images = Mountain.objects.all()
+    Camping_images = Camping.objects.all()
+    
 
-    return render(request, 'imageView.html',{'images':images})
+    return render(request, 'imageView.html',{'Valley_images':Valley_images,
+                                             'Sea_images':Sea_images,
+                                             'Mountain_images':Mountain_images,
+                                             'Camping_images':Camping_images})
