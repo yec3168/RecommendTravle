@@ -2,32 +2,32 @@
 <html>
 <head>
     <title>Naver Image List</title>
+    
 </head>
 <body>
     <h1>Naver Image List</h1>
-
     {% for image in Valley_images %}
         <div>
             <h3>{{ image.title }}</h3>
-            <img src="{{image.url}}" alt="{{ image.title }}">
+            <img src="{{image.url}}" alt="{{ image.title }}" height = 200px width = 200px>
         </div>
     {% endfor %}
     {% for image in Sea_images %}
         <div>
             <h3>{{ image.title }}</h3>
-            <img src="{{image.url}}" alt="{{ image.title }}">
+            <img src="{{image.url}}" alt="{{ image.title }}" height = 200px width = 200px>
         </div>
     {% endfor %}
     {% for image in Mountain_images %}
         <div>
             <h3>{{ image.title }}</h3>
-            <img src="{{image.url}}" alt="{{ image.title }}">
+            <img src="{{image.url}}" alt="{{ image.title }}" height = 200px width = 200px>
         </div>
     {% endfor %}
     {% for image in Camping_images %}
         <div>
             <h3>{{ image.title }}</h3>
-            <img src="{{image.url}}" alt="{{ image.title }}">
+            <img src="{{image.url}}" alt="{{ image.title }}" height = 200px width = 200px>
         </div>
     {% endfor %}
 </body>

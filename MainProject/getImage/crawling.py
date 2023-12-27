@@ -80,19 +80,23 @@ def download_image(json_data, place):
     
     if not os.path.exists(PATH): #폴더가 없으면
         os.makedirs(PATH)
-
+    
     for item in json_data:
         title = normalize_filename(item['title'])
+        #region_search(title, place)
         image = item['link']
+        # 이미지 PATH에 저장
         urllib.request.urlretrieve(image, PATH + title+".jpg")
+        # DB (columns : url) 저장위치
+        url = settings.STATIC_URL+place+"\\"+title+".jpg"
         if place == '계곡':
-            insert_to_ValleyDB(title, settings.STATIC_URL+place+"\\"+title+".jpg")
+            insert_to_ValleyDB(title, url)
         elif place == '산':
-            insert_to_MoutainDB(title, settings.STATIC_URL+place+"\\"+title+".jpg")
+            insert_to_MoutainDB(title, url)
         elif place == '바다':
-            insert_to_SeaDB(title, settings.STATIC_URL+place+"\\"+title+".jpg")
+            insert_to_SeaDB(title, url)
         elif place == '캠핑':
-            insert_to_CampingDB(title, settings.STATIC_URL+place+"\\"+title+".jpg")
+            insert_to_CampingDB(title, url)
 
 
 
@@ -131,3 +135,10 @@ def insert_to_CampingDB(title, path):
 def insert_to_SeaDB(title, path):
     result = Sea.objects.create(title=title, url=path)
     print(result)    
+
+
+
+# def region_search(title, place):
+#     title = re.sub(r"[^ㄱ-ㅣ가-힣\s]", "", title)
+#     print(title)
+    
