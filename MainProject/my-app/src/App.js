@@ -1,17 +1,21 @@
 import React from 'react';
-import { BrowserRouter, Link } from "react-router-dom";
+import {BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
-import { LaptopOutlined, NotificationOutlined, UserOutlined, HomeTwoTone} from '@ant-design/icons';
+import { 
+  LaptopOutlined,
+  NotificationOutlined, 
+  UserOutlined, 
+  HomeOutlined,
+  CommentOutlined,
+  LoginOutlined,
+  PlusOutlined,} from '@ant-design/icons';
+
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 
+import login from './user/login';
 
 const { Header, Content, Sider, Footer } = Layout;
 
-// nav 만듦
-const items1 = ['1', '2', '3', '4'].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
 
 
 // 왼쪽 메뉴바
@@ -33,6 +37,8 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
 });
 
 
+
+
 const App = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -40,6 +46,7 @@ const App = () => {
 
 
   return (
+  
     <Layout>
       <Header
         style={{
@@ -51,26 +58,48 @@ const App = () => {
           alignItems: 'center',
         }}
       >
-
-        <HomeTwoTone   // 여기에 로고(?) home 위치. 현재는 임시
-          style={{
-            width:150,
-          }}
-        />
-
+        
+      <BrowserRouter>
+      <Routes>
+        <Route path='/login' Component={login}></Route>
+      </Routes>
         <div className="demo-logo" />
         <Menu
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['2']}
-          items={items1}
+          items={[
+            {
+              label: <a href='/'>Home</a>,
+              key: 'nav_home',
+              icon: <HomeOutlined />,
+            },
+            {
+              label: <a href='/board'>Board</a>,
+              key: 'nav_community',
+              icon: <CommentOutlined />,
+            },
+            {
+              label: <Link to={"/signup"}>SIGNUP</Link>,
+              key: 'nav_signup',
+              icon: <PlusOutlined />,
+            },
+            {
+              label: <Link to={"/login"}>LOGIN</Link>,
+              key: 'nav_login',
+              icon: <LoginOutlined />,
+            },
+          ]}
           style={{
             flex: 1,
             minWidth: 0,
+            
           }}
         />
+      
+      </BrowserRouter>
       </Header>
-
+      
       <Layout>
         <Sider
           width={200}
@@ -124,7 +153,14 @@ const App = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            <p>long content</p>
+            <BrowserRouter>           
+              <div style={{padding:20, border:'5px solid gray'}}>
+                <Link to="/home">홈</Link><br/>    
+                <Link to="/photo">사진</Link><br/>
+                <Link to="/introduce">방 소개</Link><br/>
+              </div>
+            </BrowserRouter>
+
             {
               // indicates very long content
               Array.from({ length: 100 }, (_, index) => (
@@ -149,7 +185,8 @@ const App = () => {
 
 
       </Layout>
-    </Layout>
+    </Layout> 
+    
   );
 };
 
