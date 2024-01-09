@@ -11,8 +11,8 @@ import Map from "./map"
 function App(){
   return(
     <>
+      <h1 style={{textAlign:"center"}}>지역을 선택해주세요.</h1>
       <Map></Map>
-
       <ReactTooltip id="region" place='right' float="true" variant='warning' />
     </>
   );

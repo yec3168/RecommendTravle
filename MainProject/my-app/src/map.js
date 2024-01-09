@@ -47,6 +47,7 @@ const onclick =(e)=>{
 
     const region = pathId?.getAttribute("region")
     console.log(region)
+    
 
 };
 
