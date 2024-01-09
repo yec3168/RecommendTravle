@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Link, Route, Routes, NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { 
   LaptopOutlined,
@@ -12,8 +12,6 @@ import {
 
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 
-import login from './user/login';
-import signup from './user/signup';
 
 const { Header, Content, Sider, Footer } = Layout;
 
@@ -40,11 +38,25 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
 
 
 
-const home = () => {
+const Home = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
+  const navigate = useNavigate();
+
+  const goToHome =() =>{
+    navigate('/home')
+  }
+  const goToBoard =() =>{
+    navigate('/board')
+  }
+  const goToLogin =() =>{
+    navigate('/login')
+  }
+  const goToSignup =() =>{
+    navigate('/signup')
+  }
 
   return (
   
@@ -60,12 +72,6 @@ const home = () => {
         }}
       >
         
-      <BrowserRouter>
-      <Routes>
-        <Route path='/login' Component={login}></Route>
-        <Route path='/home' Component={App}></Route>
-        <Route path='/signup' Component={signup}></Route>
-      </Routes>
         <div className="demo-logo" />
         <Menu
           theme="dark"
@@ -73,12 +79,12 @@ const home = () => {
           defaultSelectedKeys={['2']}
           items={[
             {
-              label: <NavLink to= {"/"}>Home</NavLink>,
+              label: <NavLink to={"/home"}>HOME</NavLink>,
               key: 'nav_home',
               icon: <HomeOutlined />,
             },
             {
-              label: <a href='/board'>Board</a>,
+              label: <NavLink to= {"/board"}>BOARD</NavLink>,
               key: 'nav_community',
               icon: <CommentOutlined />,
             },
@@ -99,8 +105,7 @@ const home = () => {
             
           }}
         />
-      
-      </BrowserRouter>
+  
       </Header>
       
       <Layout>
@@ -156,17 +161,7 @@ const home = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            <BrowserRouter>           
-              <div style={{padding:20, border:'5px solid gray'}}>
-                <Link to="/home">홈</Link><br/>    
-                <Link to="/photo">사진</Link><br/>
-                <Link to="/introduce">방 소개</Link><br/>
-              </div>
-            </BrowserRouter>
-
-            <svg xmlns='south-korea.svg' viewBox='0 0 524 631'>
-               
-            </svg>
+  
           </div>
 
       
@@ -188,4 +183,4 @@ const home = () => {
 };
 
 
-export default home;
+export default Home;
