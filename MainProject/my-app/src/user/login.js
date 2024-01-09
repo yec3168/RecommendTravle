@@ -1,6 +1,6 @@
 import React from "react";
 
-export const login = () =>{
+const Login = () =>{
     return(
         <form>
             <input name="userName" type="text" placeholder="이름을 입력하세요."></input>
@@ -10,4 +10,4 @@ export const login = () =>{
     )
 }
 
-export default login;
+export default Login;

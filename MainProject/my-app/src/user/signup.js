@@ -2,7 +2,7 @@ import { Button } from "antd";
 import React from "react";
 
 
-const signup = () =>{
+const Signup = () =>{
     return(
         <div class = "signup" style={{}}>
             <form>
@@ -15,4 +15,4 @@ const signup = () =>{
     );
 }
 
-export default signup;
+export default Signup;
